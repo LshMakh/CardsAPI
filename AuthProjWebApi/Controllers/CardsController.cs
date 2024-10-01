@@ -21,8 +21,8 @@ namespace AuthProjWebApi.Controllers
         List<Card> cards;
 
         [HttpGet]
-        public IActionResult GetCards() { 
-            
+        public IActionResult GetCards() {
+
             List<Card> cards = new List<Card>();
             try
             {
@@ -31,26 +31,30 @@ namespace AuthProjWebApi.Controllers
             catch (Exception ex) {
 
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-                
+
             }
-        return StatusCode(StatusCodes.Status200OK, cards);
+            return StatusCode(StatusCodes.Status200OK, cards);
         }
 
-        [HttpPost]
-        public IActionResult SaveCard(Card card)
+
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCard(int id)
         {
             try
             {
-                package.SaveCard(card);
+                package.DeleteCard(id);
+                return StatusCode(StatusCodes.Status200OK);
             }
             catch (Exception ex)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError);
-
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
-            return StatusCode(StatusCodes.Status200OK);
+
         }
-       
     }
+
+    
 }
+
+
