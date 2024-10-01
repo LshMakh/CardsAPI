@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.CardsController",
+    "Method": "DeleteCard",
+    "RelativePath": "api/Cards/DeleteCard/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.CardsController",
+    "Method": "GetCards",
+    "RelativePath": "api/Cards/GetCards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
