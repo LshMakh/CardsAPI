@@ -2,6 +2,7 @@
 using AuthProjWebApi.Packages;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace AuthProjWebApi.Controllers
 {
@@ -36,6 +37,24 @@ namespace AuthProjWebApi.Controllers
             return StatusCode(StatusCodes.Status200OK, cards);
         }
 
+        [HttpPost]
+
+        public IActionResult SaveCard(Card card)
+        {
+
+            try
+            {
+                package.SaveCard(card);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return StatusCode(StatusCodes.Status200OK);
+
+        }
+
+
 
 
         [HttpDelete("{id}")]
@@ -52,9 +71,46 @@ namespace AuthProjWebApi.Controllers
             }
 
         }
-    }
 
-    
+        [HttpGet("{id}")]
+
+        public IActionResult GetCardbyId(int id) 
+        {
+
+            Card card;
+
+            try
+            {
+                card = package.GetCardbyId(id);
+            }
+            catch (Exception ex) 
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+            return StatusCode(StatusCodes.Status200OK, card);
+
+        }
+
+        [HttpPut("{id}")]
+
+        public IActionResult UpdateCard(int id,[FromBody] Card card)
+        {
+
+            try
+            {
+                package.UpdateCard(card);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+        }
+
+    }
 }
 
 

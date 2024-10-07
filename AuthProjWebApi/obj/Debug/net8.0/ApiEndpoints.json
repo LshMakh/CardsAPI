@@ -17,12 +17,107 @@
   },
   {
     "ContainingType": "AuthProjWebApi.Controllers.CardsController",
+    "Method": "GetCardbyId",
+    "RelativePath": "api/Cards/GetCardbyId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.CardsController",
     "Method": "GetCards",
     "RelativePath": "api/Cards/GetCards",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.CardsController",
+    "Method": "SaveCard",
+    "RelativePath": "api/Cards/SaveCard",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "card",
+        "Type": "AuthProjWebApi.Models.Card",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.CardsController",
+    "Method": "UpdateCard",
+    "RelativePath": "api/Cards/UpdateCard/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "card",
+        "Type": "AuthProjWebApi.Models.Card",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.UsersController",
+    "Method": "get_users",
+    "RelativePath": "api/Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.UsersController",
+    "Method": "add_user",
+    "RelativePath": "api/Users/add_user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "AuthProjWebApi.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.UsersController",
+    "Method": "Authenticate",
+    "RelativePath": "api/Users/authenticate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginData",
+        "Type": "AuthProjWebApi.Models.Login",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

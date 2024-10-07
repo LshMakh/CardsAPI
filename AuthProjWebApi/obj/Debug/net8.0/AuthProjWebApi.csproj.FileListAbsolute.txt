@@ -39,3 +39,12 @@ C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\obj\Debug\ne
 C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\obj\Debug\net8.0\AuthProjWebApi.pdb
 C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\obj\Debug\net8.0\AuthProjWebApi.genruntimeconfig.cache
 C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\obj\Debug\net8.0\ref\AuthProjWebApi.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\l.makharashvili\source\repos\AuthProjWebApi\AuthProjWebApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
