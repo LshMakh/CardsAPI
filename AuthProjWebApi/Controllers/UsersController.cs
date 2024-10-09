@@ -47,31 +47,15 @@ namespace AuthProjWebApi.Controllers
         public IActionResult get_users()
         {
             List<User> users = new List<User>();
-
-            try
-            {
-                users = package.get_users();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
+            users = package.get_users();
             return Ok(users);
         }
 
         [HttpPost]
-      
-
         public IActionResult add_user(User user)
         {
-            try
-            {
-                package.add_user(user);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+
+            package.add_user(user);
             return Ok();
 
         }

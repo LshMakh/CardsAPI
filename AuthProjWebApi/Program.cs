@@ -2,6 +2,7 @@
 using AuthProjWebApi.Auth;
 using AuthProjWebApi.Packages;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
@@ -15,7 +16,11 @@ namespace AuthProjWebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            
+            builder.Services.AddControllers(options =>
+            {
+                options.Filters.Add<GlobalExceptionFilter>();
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -71,6 +76,8 @@ namespace AuthProjWebApi
                     });
 
             });
+          
+           
 
 
             builder.Services.AddAuthentication(x =>

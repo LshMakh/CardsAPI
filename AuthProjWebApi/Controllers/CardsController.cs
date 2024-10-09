@@ -23,18 +23,21 @@ namespace AuthProjWebApi.Controllers
         List<Card> cards;
 
         [HttpGet]
-        public IActionResult GetCards() {
+        public IActionResult GetCards([FromQuery] string name = "", [FromQuery] string occupation = "")
+        {
 
             List<Card> cards = new List<Card>();
-            try
+
+            cards = package.GetCards();
+            if (!string.IsNullOrEmpty(name))
             {
-                cards = package.GetCards();
+                cards = cards.Where(c => c.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-            catch (Exception ex) {
-
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-
+            if (!string.IsNullOrEmpty(occupation))
+            {
+                cards = cards.Where(c => c.Occupation.Contains(occupation, StringComparison.OrdinalIgnoreCase)).ToList();
             }
+
             return StatusCode(StatusCodes.Status200OK, cards);
         }
         [Authorize(Roles ="Admin")]
@@ -44,15 +47,8 @@ namespace AuthProjWebApi.Controllers
         public IActionResult SaveCard(Card card)
         {
 
-            try
-            {
                 package.SaveCard(card);
-            }
-            catch(Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-            return StatusCode(StatusCodes.Status200OK);
+                return StatusCode(StatusCodes.Status200OK);
 
         }
 
@@ -61,16 +57,8 @@ namespace AuthProjWebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteCard(int id)
         {
-            try
-            {
                 package.DeleteCard(id);
                 return StatusCode(StatusCodes.Status200OK);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-
         }
        
         [HttpGet("{id}")]
@@ -78,19 +66,9 @@ namespace AuthProjWebApi.Controllers
         public IActionResult GetCardbyId(int id) 
         {
 
-            Card card;
-
-            try
-            {
+                Card card;
                 card = package.GetCardbyId(id);
-            }
-            catch (Exception ex) 
-            {
-
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
-
-            return StatusCode(StatusCodes.Status200OK, card);
+                return StatusCode(StatusCodes.Status200OK, card);
 
         }
 
