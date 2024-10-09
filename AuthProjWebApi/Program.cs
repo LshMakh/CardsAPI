@@ -4,6 +4,7 @@ using AuthProjWebApi.Packages;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Security.Claims;
 using System.Text;
 
 namespace AuthProjWebApi
@@ -28,6 +29,7 @@ namespace AuthProjWebApi
             builder.Services.AddScoped<IPKG_CARD, PKG_CARD>();
             builder.Services.AddScoped<IPKG_USERS, PKG_USERS>();
             builder.Services.AddScoped<IJwtManager, JwtManager>();
+
 
             builder.Services.AddCors(options =>
             {
@@ -70,6 +72,7 @@ namespace AuthProjWebApi
 
             });
 
+
             builder.Services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -84,6 +87,7 @@ namespace AuthProjWebApi
                     ValidateAudience = false,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
+              
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });

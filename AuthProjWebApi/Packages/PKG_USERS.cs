@@ -7,19 +7,20 @@ namespace AuthProjWebApi.Packages
     public interface IPKG_USERS
     {
         public void add_user(User user);
-
         public User? authenticate(Login loginData);
         public List<User> get_users();
+        public User get_user_name(string name);
     }
 
 
-    public class PKG_USERS : IPKG_USERS
+    public class PKG_USERS :PKG_BASE, IPKG_USERS
     {
+
+
         public void add_user(User user)
         {
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
+
             OracleConnection conn = new OracleConnection();
             conn.ConnectionString = connstr;
             conn.Open();
@@ -39,9 +40,8 @@ namespace AuthProjWebApi.Packages
         public List<User> get_users()
         {
             List<User> users = new List<User>();
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
+
 
             OracleConnection con = new OracleConnection();
             con.ConnectionString = connstr;
@@ -59,6 +59,7 @@ namespace AuthProjWebApi.Packages
                 user.Username = reader["name"].ToString();
                 user.Email = reader["email"].ToString();
                 user.Password = reader["password"].ToString();
+                user.Role = reader["role"].ToString();
 
                 users.Add(user);
             }
@@ -68,9 +69,7 @@ namespace AuthProjWebApi.Packages
 
         public User? authenticate(Login loginData)
         {
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
 
             OracleConnection con = new OracleConnection();
             con.ConnectionString = connstr;
@@ -93,9 +92,44 @@ namespace AuthProjWebApi.Packages
                 user.Id = int.Parse(reader["id"].ToString());
                 user.Username = reader["name"].ToString();
                 user.Email = reader["email"].ToString();
+                user.Role = reader["role"].ToString();
             }
             con.Close();
             return user;
         }
+        public User get_user_name(string name)
+        {
+            User user = null;
+            string connstr = ConnStr;
+            OracleConnection conn = new OracleConnection();
+            conn.ConnectionString = connstr;
+            conn.Open();
+            OracleCommand cmd = conn.CreateCommand();
+            cmd.Connection = conn;
+            cmd.CommandText="olerning.PKG_LM_USERS.get_user_name";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("p_name", OracleDbType.Varchar2).Value = name;
+            cmd.Parameters.Add("p_result", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+            OracleDataReader reader = cmd.ExecuteReader();
+
+            if(reader.Read())
+            {
+                user = new User()
+                {
+                    Id = int.Parse(reader["id"].ToString()),
+                    Password = reader["password"].ToString(),
+                    Username = reader["name"].ToString(),
+                    Email = reader["email"].ToString(),
+                    Role = reader["role"].ToString()
+                };
+                
+                
+            }
+
+
+            return user;
+        }
+
+
     }
 }

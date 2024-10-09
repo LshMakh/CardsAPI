@@ -1,5 +1,6 @@
 ﻿using AuthProjWebApi.Models;
 using AuthProjWebApi.Packages;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -36,6 +37,7 @@ namespace AuthProjWebApi.Controllers
             }
             return StatusCode(StatusCodes.Status200OK, cards);
         }
+        [Authorize(Roles ="Admin")]
 
         [HttpPost]
 
@@ -55,8 +57,7 @@ namespace AuthProjWebApi.Controllers
         }
 
 
-
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteCard(int id)
         {
@@ -71,7 +72,7 @@ namespace AuthProjWebApi.Controllers
             }
 
         }
-
+       
         [HttpGet("{id}")]
 
         public IActionResult GetCardbyId(int id) 
@@ -93,8 +94,8 @@ namespace AuthProjWebApi.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-
         public IActionResult UpdateCard(int id,[FromBody] Card card)
         {
 

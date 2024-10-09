@@ -13,10 +13,10 @@ namespace AuthProjWebApi.Controllers
             {
                 User? user = null;
                 var currentUser = HttpContext.User;
-                if (currentUser != null && currentUser.HasClaim(c => c.Type == "Id"))
+                if (currentUser != null && currentUser.HasClaim(c => c.Type == "Roles"))
                 {
                     user = new User();
-                    user.Id = int.Parse(currentUser.Claims.FirstOrDefault(c=>c.Type=="Id").Value);
+                    user.Id = int.Parse(currentUser.Claims.FirstOrDefault(c=>c.Type=="Roles").Value);
                 }
                 return user;
             }

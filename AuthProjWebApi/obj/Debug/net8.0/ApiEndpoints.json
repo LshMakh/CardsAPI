@@ -80,16 +80,6 @@
   },
   {
     "ContainingType": "AuthProjWebApi.Controllers.UsersController",
-    "Method": "get_users",
-    "RelativePath": "api/Users",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuthProjWebApi.Controllers.UsersController",
     "Method": "add_user",
     "RelativePath": "api/Users/add_user",
     "HttpMethod": "POST",
@@ -107,7 +97,7 @@
   {
     "ContainingType": "AuthProjWebApi.Controllers.UsersController",
     "Method": "Authenticate",
-    "RelativePath": "api/Users/authenticate",
+    "RelativePath": "api/Users/Authenticate",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -118,6 +108,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.UsersController",
+    "Method": "get_user_name",
+    "RelativePath": "api/Users/get_user_name/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthProjWebApi.Controllers.UsersController",
+    "Method": "get_users",
+    "RelativePath": "api/Users/get_users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

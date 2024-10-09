@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace AuthProjWebApi.Controllers
 
 {
-    [Route("api/[controller]/")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UsersController : MainController
     {
@@ -24,7 +24,26 @@ namespace AuthProjWebApi.Controllers
 
         List<User> users;
 
+
+        [HttpGet("{name}")]
+       
+        public IActionResult get_user_name(string name) 
+        {
+            User user;
+            try
+            {
+                user = package.get_user_name(name);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+            return Ok(user);
+
+        }
+
         [HttpGet]
+        
         public IActionResult get_users()
         {
             List<User> users = new List<User>();
@@ -41,7 +60,7 @@ namespace AuthProjWebApi.Controllers
         }
 
         [HttpPost]
-        [Route("add_user")]
+      
 
         public IActionResult add_user(User user)
         {
@@ -58,7 +77,7 @@ namespace AuthProjWebApi.Controllers
         }
 
         [HttpPost]
-        [Route("authenticate")]
+      
         public IActionResult Authenticate(Login loginData)
         {
            Token? token = null;

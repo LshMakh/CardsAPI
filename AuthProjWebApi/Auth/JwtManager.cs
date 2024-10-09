@@ -32,7 +32,8 @@ namespace AuthProjWebApi.Auth
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                 new Claim("Id", user.Id.ToString(),ClaimValueTypes.Integer),
-                new Claim("Username", user.Username,ClaimValueTypes.String)
+                new Claim("Username", user.Username,ClaimValueTypes.String),
+                new Claim(ClaimTypes.Role, user.Role)
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)

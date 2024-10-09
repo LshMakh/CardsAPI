@@ -18,16 +18,15 @@ namespace AuthProjWebApi.Packages
         public void DeleteCard(int id);
     }
 
-    public class PKG_CARD : IPKG_CARD
+    public class PKG_CARD :PKG_BASE, IPKG_CARD
     {
 
         public List<Card> GetCards()
         {
 
             List<Card> cards = new List<Card>();
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
+
 
             OracleConnection conn = new OracleConnection();
             conn.ConnectionString = connstr;
@@ -58,9 +57,8 @@ namespace AuthProjWebApi.Packages
         public void DeleteCard(int cards_id)
         {
             {
-                string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                        (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                        (SID = orcl)));User Id=olerning;Password=olerning";
+                string connstr = ConnStr;
+
 
                 using (OracleConnection conn = new OracleConnection(connstr))
                 {
@@ -86,9 +84,8 @@ namespace AuthProjWebApi.Packages
         public void SaveCard(Card card) {
 
             OracleConnection conn = new OracleConnection();
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
+
             conn.ConnectionString = connstr;
             conn.Open();
 
@@ -114,9 +111,8 @@ namespace AuthProjWebApi.Packages
             Card card = null;
 
             OracleConnection conn = new OracleConnection();
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
+
             conn.ConnectionString = connstr;
             conn.Open();
 
@@ -145,9 +141,8 @@ namespace AuthProjWebApi.Packages
         public void UpdateCard(Card card)
         {
             OracleConnection conn = new OracleConnection();
-            string connstr = @"Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.0.188)
-                            (PORT = 1521)) (CONNECT_DATA =   (SERVER = DEDICATED)
-                            (SID = orcl)));User Id=olerning;Password=olerning";
+            string connstr = ConnStr;
+
             conn.ConnectionString = connstr;
             conn.Open();
 
